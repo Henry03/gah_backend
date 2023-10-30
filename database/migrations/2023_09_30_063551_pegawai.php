@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('no_telp');
             $table->string('alamat');
+            $table->string('role');
             $table->timestamps();
         });
     }

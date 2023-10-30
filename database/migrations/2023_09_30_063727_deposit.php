@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('deposit', function (Blueprint $table) {
             $table->id();
-            $table->integer('jumlah');
+            $table->integer('jumlah_deposit');
             $table->timestamps();
         });
     }

@@ -30,7 +30,8 @@ class CustomerSeeder extends Seeder
                 'email' => 'tukiman@gmail.com',
                 'password' => Hash::make('tukimanpass'),
                 'no_telp' => '088077669009',
-                'alamat' => 'Jl. Kaliurang KM. 5'
+                'alamat' => 'Jl. Kaliurang KM. 5',
+                'role' => 'customer'
             ],
             [
                 'id' => 2,
@@ -42,7 +43,8 @@ class CustomerSeeder extends Seeder
                 'email' => 'jali@gmail.com',
                 'password' => NULL,
                 'no_telp' => '089877542343',
-                'alamat' => 'Jl. Malioboro No. 66 E'
+                'alamat' => 'Jl. Malioboro No. 66 E',
+                'role' => 'customer'
             ],
             [
                 'id' => 3,
@@ -54,7 +56,8 @@ class CustomerSeeder extends Seeder
                 'email' => 'marina@gmail.com',
                 'password' => NULL,
                 'no_telp' => '081234567890',
-                'alamat' => 'Jl. Maguwoharjo No. 42'
+                'alamat' => 'Jl. Maguwoharjo No. 42',
+                'role' => 'customer'
             ],
             [
                 'id' => 4,
@@ -66,7 +69,8 @@ class CustomerSeeder extends Seeder
                 'email' => 'ferdi@gmail.com',
                 'password' => Hash::make('ferdipass'),
                 'no_telp' => '081234567890',
-                'alamat' => 'Jl. Ring Road Utara No. 3'
+                'alamat' => 'Jl. Ring Road Utara No. 3',
+                'role' => 'customer'
             ],
             [
                 'id' => 5,
@@ -78,7 +82,8 @@ class CustomerSeeder extends Seeder
                 'email' => 'yustin@gmail.com',
                 'password' => Hash::make('yustinpass'),
                 'no_telp' => '084255554323',
-                'alamat' => 'Jl. Seturan No. 153'
+                'alamat' => 'Jl. Seturan No. 153',
+                'role' => 'customer'
             ]
         ];
 

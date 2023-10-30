@@ -16,17 +16,20 @@ class SeasonSeeder extends Seeder
         $season = [
             [
                 'id' => 1,
-                'nama_season' => 'Promo',
+                'tipe_season' => 'Promo',
+                'nama_season' => 'Tahun Baru 2023',
                 'tanggal_mulai' => '2023-09-01',
                 'tanggal_selesai' => '2023-10-31',
             ],[
                 'id' => 2,
-                'nama_season' => 'Normal',
+                'tipe_season' => 'Normal',
+                'nama_season' => 'Merry Christmas 2023',
                 'tanggal_mulai' => '2023-11-01',
                 'tanggal_selesai' => '2023-12-31',
             ],[
                 'id' => 3,
-                'nama_season' => 'High Season',
+                'tipe_season' => 'High Season',
+                'nama_season' => 'Lebaran 2024',
                 'tanggal_mulai' => '2024-01-01',
                 'tanggal_selesai' => '2024-02-29',
             ]

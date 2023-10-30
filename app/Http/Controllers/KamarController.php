@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Kamar;
+use Illuminate\Support\Facades\DB;
+
+use function PHPUnit\Framework\once;
 
 class KamarController extends Controller
 {
@@ -76,7 +79,7 @@ class KamarController extends Controller
 
     public function update(Request $request, $id){
         $input = $request->validate([
-            'id' => 'required',
+            'id' => ['required','unique:kamar,id,'.$id],
             'id_jenis_kamar' => 'required',
             'id_status_kamar' => 'required',
             'tempat_tidur' => 'required',
@@ -129,5 +132,34 @@ class KamarController extends Controller
             'message' => 'Kamar Gagal Dihapus',
             'data' => ''
         ], 400);
-    }  
+    } 
+
+    public function search(Request $request){
+        $input = $request->input('keyword');
+        $filter = $request->input('filter', 'id');
+        $sort = $request->input('sort', 'asc');
+
+        $kamar = DB::table('kamar as k')
+        ->select('*', 'k.id as nomor_kamar')
+        ->join('jenis_kamar as jk', 'k.id_jenis_kamar', '=', 'jk.id')
+        ->join('status_kamar as sk', 'k.id_status_kamar', '=', 'sk.id')
+        ->where('k.id', 'like', '%'.$input.'%')
+        ->orWhere('jk.nama_jenis_kamar', 'like', '%'.$input.'%')
+        ->orderBy('k.'.$filter, $sort)
+        ->paginate(10);
+
+        if($kamar){
+            return response()->json([
+                'success' => true,
+                'message' => 'Hasil Pencarian Kamar',
+                'data' => $kamar
+            ], 200);
+        }
+
+        return response()->json([
+            'success' => false,
+            'message' => 'Kamar Tidak Ditemukan',
+            'data' => ''
+        ], 404);
+    }
 }

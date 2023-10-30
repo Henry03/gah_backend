@@ -16,19 +16,19 @@ class UangJaminanSeeder extends Seeder
         $uang_jaminan = [
             [
                 'id' => 1,
-                'jumlah' => 450000,
+                'jumlah_uang_jaminan' => 450000,
             ],[
                 'id' => 2,
-                'jumlah' => 1800000,
+                'jumlah_uang_jaminan' => 1800000,
             ],[
                 'id' => 3,
-                'jumlah' => 360000,
+                'jumlah_uang_jaminan' => 360000,
             ],[
                 'id' => 4,
-                'jumlah' => 420000,
+                'jumlah_uang_jaminan' => 420000,
             ],[
                 'id' => 5,
-                'jumlah' => 420000,
+                'jumlah_uang_jaminan' => 420000,
             ]
         ];
 

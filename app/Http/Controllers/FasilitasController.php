@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Fasilitas;
+use Illuminate\Support\Facades\DB;
 
 class FasilitasController extends Controller
 {
@@ -100,12 +101,12 @@ class FasilitasController extends Controller
 
         if($fasilitas){
             $fasilitas->delete();
-
             return response()->json([
                 'success' => true,
                 'message' => 'Fasilitas Berhasil Dihapus',
                 'data' => $fasilitas
             ], 200);
+
         }
 
         return response()->json([
@@ -113,5 +114,31 @@ class FasilitasController extends Controller
             'message' => 'Fasilitas Gagal Dihapus',
             'data' => ''
         ], 400);
+    }
+
+    public function search(Request $request){
+        $input = $request->input('keyword');
+        $filter = $request->input('filter', 'nama_fasilitas');
+        $sort = $request->input('sort', 'asc');
+
+        $fasilitas = DB::table('fasilitas')
+        ->where('nama_fasilitas', 'like', '%' . $input . '%')
+        ->orWhere('harga', 'like', '%' . $input . '%')
+        ->orderBy($filter, $sort)
+        ->paginate(10);
+
+        if($fasilitas){
+            return response()->json([
+                'success' => true,
+                'message' => 'Hasil Pencarian Fasilitas',
+                'data' => $fasilitas
+            ], 200);
+        }
+
+        return response()->json([
+            'success' => false,
+            'message' => 'Fasilitas Tidak Ditemukan',
+            'data' => ''
+        ], 404);
     }
 }

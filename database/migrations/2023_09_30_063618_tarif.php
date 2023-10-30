@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tarif', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_jenis_kamar')->constrained('jenis_kamar');
-            $table->foreignId('id_season')->constrained('season');
+            $table->foreignId('id_season')->constrained('season')->onDelete('cascade');
             $table->integer('tarif');
             $table->timestamps();
         });

@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('season', function (Blueprint $table) {
             $table->id();
+            $table->string('tipe_season');
             $table->string('nama_season');
             $table->date('tanggal_mulai');
             $table->date('tanggal_selesai');

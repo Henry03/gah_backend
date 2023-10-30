@@ -5,16 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Season extends Model
+class JenisCustomer extends Model
 {
     use HasFactory;
 
-    protected $table = "season";
+    protected $table = "jenis_customer";
 
     protected $fillable = [
-        'nama_season',
-        'tipe_season',
-        'tanggal_mulai',
-        'tanggal_selesai',
+        'nama_jenis_customer',
     ];
+
+    
 }

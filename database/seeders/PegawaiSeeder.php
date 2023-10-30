@@ -24,6 +24,7 @@ class PegawaiSeeder extends Seeder
                 'password' => Hash::make('ownerpass'),
                 'no_telp' => '089990098776',
                 'alamat' => 'Jl. Kledokan No. 105 C',
+                'role' => 'pegawai'
             ],
             [
                 'id_role' => 2,
@@ -32,6 +33,7 @@ class PegawaiSeeder extends Seeder
                 'password' => Hash::make('adminpass'),
                 'no_telp' => '089990098776',
                 'alamat' => 'Jl. Kledokan No. 105 C',
+                'role' => 'pegawai'
             ],
             [
                 'id_role' => 3,
@@ -40,6 +42,7 @@ class PegawaiSeeder extends Seeder
                 'password' => Hash::make('eddopass'),
                 'no_telp' => '081234432112',
                 'alamat' => 'Jl. Babarsari No. 43',
+                'role' => 'pegawai'
             ],
             [
                 'id_role' => 4,
@@ -47,7 +50,8 @@ class PegawaiSeeder extends Seeder
                 'email' => 'sansa@gah.com',
                 'password' => Hash::make('sansapass'),
                 'no_telp' => '085657600987',
-                'alamat' => 'Gg. Permai Indah, No.1A, Jl. Seturan'
+                'alamat' => 'Gg. Permai Indah, No.1A, Jl. Seturan',
+                'role' => 'pegawai'
             ],
             [
                 'id_role' => 5,
@@ -56,6 +60,7 @@ class PegawaiSeeder extends Seeder
                 'password' => Hash::make('memetpass'),
                 'no_telp' => '085657600987',
                 'alamat' => 'Gg. Rukun No. 3, Jl. Babarsari',
+                'role' => 'pegawai'
             ],
         ];
 

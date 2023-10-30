@@ -24,9 +24,16 @@ class Customer extends Authenticatable
         'password',
         'no_telp',
         'alamat',
+        'role'
     ];
     
     protected $hidden = [
         'password',
     ];
+
+    public function jenisCustomer()
+    {
+        return $this->belongsTo(JenisCustomer::class, 'id_jenis_customer');
+    }   
+
 }

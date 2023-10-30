@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('reservasi_kamar', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_reservasi')->constrained('reservasi');
-            $table->foreignId('id_kamar')->constrained('kamar')->nullable();
+            $table->foreignId('id_kamar')->constrained('kamar')->nullable()->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('id_pegawai')->constrained('pegawai');
             $table->foreignId('id_reservasi')->constrained('reservasi');
             $table->datetime('tgl_transaksi');
+            $table->integer('sub_total');
             $table->integer('diskon');
             $table->integer('pajak');
             $table->integer('total_pembayaran');

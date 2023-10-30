@@ -29,11 +29,31 @@ class Reservasi extends Model
 
     public function transaksi()
     {
-        return $this->hasMany(Transaksi::class, 'id_customer', 'id_customer');
+        return $this->hasOne(Transaksi::class, 'id_reservasi', 'id');
     }
 
     public function customer()
     {
-        return $this->belongsTo(Customer::class, 'id_customer', 'id');
+        return $this->hasOne(Customer::class,  'id', 'id_customer');
+    }
+
+    public function pegawai()
+    {
+        return $this->belongsTo(Pegawai::class, 'id_pegawai', 'id');
+    }
+
+    public function deposit()
+    {
+        return $this->hasOne(Deposit::class, 'id');
+    }
+
+    public function promo()
+    {
+        return $this->hasOne(Promo::class, 'id_promo', 'id');
+    }
+
+    public function uang_jaminan()
+    {
+        return $this->hasOne(UangJaminan::class, 'id');
     }
 }

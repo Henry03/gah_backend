@@ -25,6 +25,8 @@ class AuthController extends Controller
                 'no_telp' => 'required|unique:pegawai|unique:customer',
                 'alamat' => 'required',
             ]);
+            $input['password'] = bcrypt($input['password']);
+            $input['role'] = 'customer';
         }else if($request->id_jenis_customer == 2){
             $input = $request->validate([
                 'id_jenis_customer' => 'required',
@@ -36,9 +38,9 @@ class AuthController extends Controller
                 'no_telp' => 'required|unique:pegawai|unique:customer',
                 'alamat' => 'required',
             ]);
+            $input['role'] = 'customer';
         }
 
-        $input['password'] = bcrypt($input['password']);
         $customer = Customer::create($input);
         $token = $customer->createToken('AuthToken')->accessToken;
 
@@ -60,6 +62,7 @@ class AuthController extends Controller
             'alamat' => 'required',
         ]);
 
+        $input['role'] = 'pegawai';
         $input['password'] = bcrypt($input['password']);
         $pegawai = Pegawai::create($input);
         $token = $pegawai->createToken('AuthToken')->accessToken;
@@ -85,17 +88,29 @@ class AuthController extends Controller
                 'status' => true,
                 'message' => 'Login Success',
                 'data' => Auth::guard('customer')->user(),
+                'role' => 'customer',
                 'token' => $token,
             ], 200);
         }
 
 
         if(Auth::guard('pegawai')->attempt($loginData)){
-            $token = Auth::guard('pegawai')->user()->createToken('AuthToken', ['pegawai'])->plainTextToken;
+            if(Auth::guard('pegawai')->user()->id_role == 1){
+                $token = Auth::guard('pegawai')->user()->createToken('AuthToken', ['owner'])->plainTextToken;
+            }else if(Auth::guard('pegawai')->user()->id_role == 2){
+                $token = Auth::guard('pegawai')->user()->createToken('AuthToken', ['admin'])->plainTextToken;
+            }else if(Auth::guard('pegawai')->user()->id_role == 3){
+                $token = Auth::guard('pegawai')->user()->createToken('AuthToken', ['gm'])->plainTextToken;
+            }else if(Auth::guard('pegawai')->user()->id_role == 4){
+                $token = Auth::guard('pegawai')->user()->createToken('AuthToken', ['sm'])->plainTextToken;
+            }else if(Auth::guard('pegawai')->user()->id_role == 5){
+                $token = Auth::guard('pegawai')->user()->createToken('AuthToken', ['fo'])->plainTextToken;
+            }
             return response()->json([
                 'status' => true,
                 'message' => 'Login Success',
                 'data' => Auth::guard('pegawai')->user(),
+                'role' => 'pegawai',
                 'token' => $token,
             ], 200);
         }
@@ -144,5 +159,21 @@ class AuthController extends Controller
             'message' => 'Password changed successfully',
             'data' => $user,
         ], 200);
+    }
+
+    public function signedinCheck () {
+        $user = Auth::user();
+        if($user){
+            return response()->json([
+                'status' => true,
+                'message' => 'User is signed in',
+                'data' => $user,
+            ], 200);
+        }else{
+            return response()->json([
+                'status' => false,
+                'message' => 'User is not signed in',
+            ], 401);
+        }
     }
 }

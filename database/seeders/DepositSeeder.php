@@ -16,16 +16,16 @@ class DepositSeeder extends Seeder
         $deposit = [
             [
                 'id' => 1,
-                'jumlah' => 300000,
+                'jumlah_deposit' => 300000,
             ],[
                 'id' => 2,
-                'jumlah' => 300000,
+                'jumlah_deposit' => 300000,
             ],[
                 'id' => 3,
-                'jumlah' => 300000,
+                'jumlah_deposit' => 300000,
             ],[
                 'id' => 4,
-                'jumlah' => 300000,
+                'jumlah_deposit' => 300000,
             ]
         ];
         DB::table('deposit')->insert($deposit);

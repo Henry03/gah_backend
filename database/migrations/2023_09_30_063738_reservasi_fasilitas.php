@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('reservasi_fasilitas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_reservasi')->constrained('reservasi');
-            $table->foreignId('id_fasilitas')->constrained('fasilitas');
+            $table->foreignId('id_reservasi')->constrained('reservasi')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('id_fasilitas')->constrained('fasilitas')->onDelete('cascade')->onUpdate('cascade');
             $table->date('tgl_reservasi_fasilitas');
             $table->integer('jumlah');
             $table->timestamps();
