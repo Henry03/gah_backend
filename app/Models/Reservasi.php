@@ -26,4 +26,14 @@ class Reservasi extends Model
         'jumlah_anak',
         'status_reservasi'
     ];
+
+    public function transaksi()
+    {
+        return $this->hasMany(Transaksi::class, 'id_customer', 'id_customer');
+    }
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class, 'id_customer', 'id');
+    }
 }

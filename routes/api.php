@@ -85,14 +85,10 @@ Route::middleware(['auth:sanctum','ability:pegawai'])->group(function () {
 
 Route::get('customers', [CustomerController::class, 'index'])->middleware('auth:pegawai-api', 'role:1');
 
-// Route Pegawai
-Route::middleware(['auth:pegawai-api'])->group(function () {
-
-});
 
 // Router Customer
-Route::middleware(['auth:customer-api'])->group(function () {
-
+Route::middleware(['auth:sanctum', 'ability:customer'])->group(function () {
+    // Route::put('customer', [CustomerController::class, 'update']);
     Route::controller(CustomerController::class)->group(function () {
         Route::get('customer', 'show');
         Route::put('customer', 'update');

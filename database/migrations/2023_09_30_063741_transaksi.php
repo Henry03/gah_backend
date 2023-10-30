@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('transaksi', function (Blueprint $table) {
-            $table->string('id', 12)->primary();
+            $table->string('id_transaksi', 12)->primary();
             $table->foreignId('id_pegawai')->constrained('pegawai');
             $table->foreignId('id_reservasi')->constrained('reservasi');
             $table->datetime('tgl_transaksi');

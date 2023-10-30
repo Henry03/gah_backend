@@ -15,7 +15,7 @@ class TransaksiSeeder extends Seeder
     {
         $transaksi = [
             [
-                'id' => "P021023-1",
+                'id_transaksi' => "P021023-1",
                 'id_pegawai' => 5,
                 'id_reservasi' => 1,
                 'tgl_transaksi' => '2023-10-02',
@@ -24,7 +24,7 @@ class TransaksiSeeder extends Seeder
                 'total_pembayaran' => 570000,
                 'jumlah_pembayaran' => -120000,
             ],[
-                'id' => "G290923-1",
+                'id_transaksi' => "G290923-1",
                 'id_pegawai' => 5,
                 'id_reservasi' => 2,
                 'tgl_transaksi' => '2023-09-29',
@@ -33,7 +33,7 @@ class TransaksiSeeder extends Seeder
                 'total_pembayaran' => 2940000,
                 'jumlah_pembayaran' => 1170000,
             ],[
-                'id' => "G180923-1",
+                'id_transaksi' => "G180923-1",
                 'id_pegawai' => 5,
                 'id_reservasi' => 6,
                 'tgl_transaksi' => '2023-09-18',

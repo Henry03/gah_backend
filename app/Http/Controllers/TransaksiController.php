@@ -4,14 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Transaksi;
+use App\Models\Reservasi;
 
 class TransaksiController extends Controller
 {
     public function indexByCustomer() 
     {
         $id = auth()->user()->id;
-        $transaksi = Transaksi::where('id_customer', $id)->get();
-
+        $transaksi = Transaksi::select('*')
+            ->join('reservasi as r', 'transaksi.id_reservasi', '=', 'r.id')
+            ->where('r.id_customer', $id)
+            ->get();
         if($transaksi){
             return response()->json([
                 'success' => true,

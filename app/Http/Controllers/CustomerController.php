@@ -21,7 +21,7 @@ class CustomerController extends Controller
 
     public function show()
     {
-        $id = Auth::guard('customer-api')->user()->id;
+        $id = Auth::user()->id;
         $customer = Customer::find($id);
 
         if($customer){
@@ -42,20 +42,19 @@ class CustomerController extends Controller
 
     public function update(Request $request)
     {
-        $id = auth()->user()->id;
-        $customer = Customer::find($id)->where('nama_institusi', !null);
-
+        $id = Auth::user()->id;
+        $customer = Customer::find($id);
         if($customer){
             $input = $request->validate([
+                'jenis_identitas' => 'required',
+                'no_identitas' => 'required',
                 'nama' => 'required',
                 'alamat' => 'required',
                 'no_telp' => 'required',
-            ]);
 
-            $customer->nama = $input['nama'];
-            $customer->alamat = $input['alamat'];
-            $customer->no_telp = $input['no_telp'];
-            $customer->save();
+            ]);
+            
+            $customer->update($input);
 
             return response()->json([
                 'success' => true,

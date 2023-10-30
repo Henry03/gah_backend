@@ -11,6 +11,12 @@ class Transaksi extends Model
 
     protected $table = 'transaksi';
 
+    protected $primaryKey = 'id_transaksi';
+
+    protected $casts = [
+        'id_transaksi' => 'string',
+    ];
+
     protected $fiiled = [
         'id_pegawai',
         'id_reservasi',
@@ -28,6 +34,6 @@ class Transaksi extends Model
 
     public function reservasi()
     {
-        return $this->belongsTo(Reservasi::class, 'id_reservasi');
+        return $this->belongsTo(Reservasi::class, 'id_reservasi', 'id');
     }
 }

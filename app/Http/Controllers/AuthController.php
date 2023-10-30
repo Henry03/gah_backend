@@ -123,7 +123,6 @@ class AuthController extends Controller
         // return $request->guard;
         // return Auth::guard('customer-api')->user();
         $user = Auth::user();
-        return $user;
 
         $input = $request->validate([
             'old_password' => 'required',
