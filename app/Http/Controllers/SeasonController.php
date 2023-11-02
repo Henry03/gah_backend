@@ -126,6 +126,14 @@ class SeasonController extends Controller
     public function destroy($id){
         $season = Season::find($id);
 
+        if($season->tanggal_mulai < Carbon::now()->addMonth(2)){
+            return response()->json([
+                'success' => false,
+                'message' => 'Season must be at least 2 months from now',
+                'data' => ''
+            ], 400);
+        }
+
         if($season){
             $season->delete();
 

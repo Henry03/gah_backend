@@ -38,7 +38,7 @@ class PegawaiController extends Controller
             $input = $request->validate([
                 'nama' => 'required',
                 'alamat' => 'required',
-                'no_telp' => ['required','unique:pegawai,no_telp,'.$id,'unique:customer,no_telp,'.$id],
+                'no_telp' => ['required'],
 
             ]);
             

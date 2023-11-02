@@ -24,7 +24,7 @@ class CustomerController extends Controller
     public function indexGrup(Request $request)
     {
         $input = $request->input('keyword');
-        $filter = $request->input('filter', 'nama_fasilitas');
+        $filter = $request->input('filter', 'nama');
         $sort = $request->input('sort', 'asc');
 
         $customers = DB::table('customer')

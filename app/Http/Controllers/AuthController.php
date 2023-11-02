@@ -148,7 +148,10 @@ class AuthController extends Controller
             return response()->json([
                 'status' => false,
                 'message' => 'Old password does not match',
-            ], 400);
+                'errors' => [
+                    'old_password' => ['Old password does not match']
+                ]
+            ], 422);
         }
         $input['password'] = bcrypt($input['password']);
         $user->password = $input['password'];
